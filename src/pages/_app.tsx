@@ -1,27 +1,12 @@
 import { AppProps } from 'next/app'
-import Head from 'next/head'
+import { FirestoreProvider } from '../hooks/useFirestore'
 
-import GlobalStyles from 'styles/global'
-
-function App({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Head>
-        <title>Boilerplate</title>
-        <link
-          rel="shortcut icon"
-          href="/img/icon-192.png"
-          type="image/x-icon"
-        />
-        <link rel="apple-touch-icon" href="/img/icon-512.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#06092B" />
-        <meta name="description" content="A simple boilerplate for next.js" />
-      </Head>
-      <GlobalStyles />
+    <FirestoreProvider>
       <Component {...pageProps} />
-    </>
+    </FirestoreProvider>
   )
 }
 
-export default App
+export default MyApp

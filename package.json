@@ -9,7 +9,9 @@
     "postinstall": "husky install",
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "firebase:emulators:start": "firebase emulators:start",
+    "firebase:emulators:export": "firebase emulators:export ./firebase-seed"
   },
   "husky": {
     "hooks": {
@@ -23,10 +25,16 @@
     ]
   },
   "dependencies": {
+    "@firebase/testing": "^0.20.11",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/react-redux": "^7.1.25",
+    "firebase": "^9.22.1",
     "next": "12.0.7",
     "next-pwa": "^5.4.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
     "styled-components": "^5.3.3",
     "styled-media-query": "^2.1.2"
   },

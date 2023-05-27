@@ -1,17 +1,25 @@
-import * as S from './styles'
+import { useFirestoreData } from '../../store'
 
-const Main = () => (
-  <S.Wrapper>
-    <S.Logo>Boilerplate</S.Logo>
-    <S.Title>Next.Js Boilerplate</S.Title>
-    <S.Description>
-      Next.Js, React.Js, Typescript e Styled Components
-    </S.Description>
-    <S.Illustration
-      src="/img/hero-illustration.svg"
-      alt="Desenvolvedor sentado a frente de um computador"
-    />
-  </S.Wrapper>
-)
+export const Example = () => {
+  const { data, loading, error } = useFirestoreData()
 
-export default Main
+  console.log("")
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
+
+
+
+  return (
+    <ul>
+      {data.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  )
+}

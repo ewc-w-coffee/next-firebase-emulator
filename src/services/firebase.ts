@@ -12,7 +12,14 @@ const firebaseConfig = {
 }
 
 try {
-  firebase.initializeApp(firebaseConfig)
+  const app = firebase.initializeApp(firebaseConfig)
+
+  if (window.location.hostname === 'localhost') {
+    app.firestore().settings({
+      host: 'localhost:8080',
+      ssl: false
+    })
+  }
 } catch (error: any) {
   console.error('Firebase initialization error', error.stack)
 }
